@@ -19,6 +19,10 @@
   (setq initial-scratch-message "")
   (setq inhibit-startup-message t))
 
+(use-package mood-line
+  :config
+  (mood-line-mode))
+
 (use-package helm
   :bind (("M-x" . helm-M-x)
          ("C-x b" . helm-mini)
