@@ -31,14 +31,46 @@
   :bind (("M-x" . helm-M-x)
          ("C-x b" . helm-mini)
          ("C-x C-f" . helm-find-files))
-  :config (helm-mode 1))
+  :config
+  (helm-mode 1))
+
+(use-package js2-mode
+  :mode ("\\.js\\'" . js-mode)
+  :hook (js2-mode . lsp)
+  :config
+  (setq js2-basic-offset 2))
+
+(use-package json-mode
+  :mode ("\\.json\\'" . json-mode)
+  :hook (json-mode . lsp)
+  :config
+  (setq js-indent-level 2))
+
+(use-package typescript-mode
+  :mode ("\\.ts\\'" . typescript-mode)
+  :hook (typescript-mode . lsp)
+  :config
+  (setq typescript-indent-level 2))
+
+(use-package web-mode
+  :hook (web-mode . lsp)
+  :mode ("\\.vue\\'" . web-mode)
+  :config
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-script-padding 0)
+  (setq web-mode-style-padding 0))
+
+(use-package lsp-mode
+  :commands lsp)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(helm)))
+ '(package-selected-packages '(lsp-mode helm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
