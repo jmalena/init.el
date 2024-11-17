@@ -3,6 +3,8 @@
 
 (use-package emacs
   :init
+  ;; Hide toolbar
+  (tool-bar-mode -1)
   ;; Open empty file on startup
   (setq initial-scratch-message "")
   (setq inhibit-startup-message t))
