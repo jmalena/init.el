@@ -1,6 +1,12 @@
 (eval-when-compile
   (require 'use-package))
 
+(use-package emacs
+  :init
+  ;; Open empty file on startup
+  (setq initial-scratch-message "")
+  (setq inhibit-startup-message t))
+
 (use-package helm
   :bind (("M-x" . helm-M-x)
          ("C-x b" . helm-mini)
