@@ -65,12 +65,24 @@
 (use-package lsp-mode
   :commands lsp)
 
+(use-package company
+  :after lsp-mode
+  :hook (prog-mode . company-mode)
+  :bind
+  (:map company-active-map
+	("<tab>" . company-complete-selection))
+  (:map lsp-mode-map
+        ("<tab>" . company-indent-or-complete-common))
+  :custom
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0.0))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(lsp-mode helm)))
+ '(package-selected-packages '(company lsp-mode helm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
