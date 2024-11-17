@@ -23,6 +23,11 @@
   ;; Enable fullscreen mode on macOS
   (ns-use-native-fullscreen nil))
 
+(use-package timu-caribbean-theme
+  :ensure t
+  :config
+  (load-theme 'timu-caribbean t))
+
 (use-package mood-line
   :config
   (mood-line-mode))
