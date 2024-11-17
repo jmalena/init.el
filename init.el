@@ -13,11 +13,15 @@
 
 (use-package emacs
   :init
-  ;; Hide toolbar
-  (tool-bar-mode -1)
   ;; Open empty file on startup
   (setq initial-scratch-message "")
-  (setq inhibit-startup-message t))
+  (setq inhibit-startup-message t)
+  :config
+  ;; Hide toolbar
+  (tool-bar-mode -1)
+  :custom
+  ;; Enable fullscreen mode on macOS
+  (ns-use-native-fullscreen nil))
 
 (use-package mood-line
   :config
