@@ -41,6 +41,14 @@
   :config
   (helm-mode 1))
 
+(use-package ag
+  :ensure t
+  :bind (("C-c s" . ag-project))
+  :config
+  (setq ag-highlight-search t
+        ag-reuse-window t
+        ag-reuse-buffers t))
+
 (use-package js2-mode
   :mode ("\\.js\\'" . js-mode)
   :hook (js2-mode . lsp)
