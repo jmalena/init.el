@@ -16,6 +16,8 @@
   ;; Open empty file on startup
   (setq initial-scratch-message "")
   (setq inhibit-startup-message t)
+  :bind
+  ("M-_" . 'undo-redo)
   :config
   ;; Hide toolbar
   (tool-bar-mode -1)
@@ -23,14 +25,14 @@
   ;; Enable fullscreen mode on macOS
   (ns-use-native-fullscreen nil))
 
+(use-package mood-line
+  :config
+  (mood-line-mode))
+
 (use-package timu-caribbean-theme
   :ensure t
   :config
   (load-theme 'timu-caribbean t))
-
-(use-package mood-line
-  :config
-  (mood-line-mode))
 
 (use-package helm
   :bind (("M-x" . helm-M-x)
