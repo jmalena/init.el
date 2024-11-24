@@ -83,15 +83,11 @@
   :config
   (setq typescript-indent-level 2))
 
-(use-package web-mode
-  :hook (web-mode . lsp)
-  :mode ("\\.vue\\'" . web-mode)
+(use-package vue-mode
+  :hook (vue-mode . lsp)
+  :mode ("\\.vue\\'" . vue-mode)
   :config
-  (setq web-mode-markup-indent-offset 2)
-  (setq web-mode-css-indent-offset 2)
-  (setq web-mode-code-indent-offset 2)
-  (setq web-mode-script-padding 0)
-  (setq web-mode-style-padding 0))
+  (setq mmm-submode-decoration-level 0))
 
 (use-package graphql-mode
   :hook (graphql-mode . lsp)
