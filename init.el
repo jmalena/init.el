@@ -78,22 +78,19 @@
   (setq web-mode-style-padding 0))
 
 (use-package graphql-mode
+  :hook (graphql-mode . lsp)
   :mode ("\\.graphql\\'" . graphql-mode))
 
 (use-package lsp-mode
   :commands lsp)
 
-(use-package company
-  :after lsp-mode
-  :hook (prog-mode . company-mode)
-  :bind
-  (:map company-active-map
-	("<tab>" . company-complete-selection))
-  (:map lsp-mode-map
-        ("<tab>" . company-indent-or-complete-common))
-  :custom
-  (company-minimum-prefix-length 1)
-  (company-idle-delay 0.0))
+(use-package corfu
+  :hook
+  ((prog-mode . corfu-mode)
+   (shell-mode . corfu-mode)
+   (eshell-mode . corfu-mode))
+  :init
+  (global-corfu-mode))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
