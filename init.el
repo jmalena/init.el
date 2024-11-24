@@ -1,15 +1,24 @@
-;; Setup package.el repositories
-(require 'package)
-(add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(package-initialize)
+;; Install straight.el
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 6))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-;; Setup use-package
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(require 'use-package)
-(setq use-package-always-ensure t)
+;; Install use-package
+(straight-use-package 'use-package)
+
+;; Configure use-package to use straight.el by default
+(use-package straight
+  :custom
+  (straight-use-package-by-default t))
 
 (use-package emacs
   :init
@@ -17,6 +26,7 @@
   (setq initial-scratch-message "")
   (setq inhibit-startup-message t)
   :bind
+  ;; Bind redo to M-_
   ("M-_" . 'undo-redo)
   :config
   ;; Hide toolbar
@@ -25,12 +35,19 @@
   ;; Enable fullscreen mode on macOS
   (ns-use-native-fullscreen nil))
 
+(use-package dashboard
+  :config
+  (setq dashboard-items '((recents . 5)))
+  (setq dashboard-startupify-list '(dashboard-insert-banner
+                                    dashboard-insert-newline
+                                    dashboard-insert-items))
+  (dashboard-setup-startup-hook))
+
 (use-package mood-line
   :config
   (mood-line-mode))
 
 (use-package timu-caribbean-theme
-  :ensure t
   :config
   (load-theme 'timu-caribbean t))
 
@@ -42,7 +59,6 @@
   (helm-mode 1))
 
 (use-package ag
-  :ensure t
   :bind (("C-c s" . ag-project))
   :config
   (setq ag-highlight-search t
@@ -91,16 +107,3 @@
    (eshell-mode . corfu-mode))
   :init
   (global-corfu-mode))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages '(graphql-mode ag company lsp-mode helm)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
