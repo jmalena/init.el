@@ -47,9 +47,9 @@
   :config
   (mood-line-mode))
 
-(use-package timu-caribbean-theme
-  :config
-  (load-theme 'timu-caribbean t))
+(use-package spacemacs-theme
+  :defer t
+  :init (load-theme 'spacemacs-dark t))
 
 (use-package helm
   :bind (("M-x" . helm-M-x)
