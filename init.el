@@ -94,6 +94,12 @@
 (use-package lsp-mode
   :commands lsp)
 
+(use-package smartparens
+  :ensure smartparens
+  :hook (prog-mode js2-mode json-mode typescript-mode vue-mode graphql-mode)
+  :config
+  (require 'smartparens-config))
+
 (use-package corfu
   :hook
   ((prog-mode . corfu-mode)
