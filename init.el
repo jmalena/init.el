@@ -63,6 +63,14 @@
   :config
   (setq ag-highlight-search t))
 
+(use-package rust-mode
+  :mode ("\\.rs\\'" . rust-mode)
+  :hook (rust-mode . lsp))
+
+(use-package slint-mode
+  :mode ("\\.slint\\'" . slint-mode)
+  :hook (slint-mode . lsp))
+
 (use-package js2-mode
   :mode ("\\.js\\'" . js-mode)
   :hook (js2-mode . lsp)
@@ -96,7 +104,7 @@
 
 (use-package smartparens
   :ensure smartparens
-  :hook (prog-mode js2-mode json-mode typescript-mode vue-mode graphql-mode)
+  :hook (prog-mode rust-mode js2-mode json-mode typescript-mode vue-mode graphql-mode)
   :config
   (require 'smartparens-config))
 
