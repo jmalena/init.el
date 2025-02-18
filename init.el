@@ -99,6 +99,9 @@
   :hook (graphql-mode . lsp)
   :mode ("\\.graphql\\'" . graphql-mode))
 
+(use-package nix-mode
+  :mode ("\\.nix\\'" . nix-mode))
+
 (use-package lsp-mode
   :commands lsp)
 
