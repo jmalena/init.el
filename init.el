@@ -63,6 +63,44 @@
   :config
   (setq ag-highlight-search t))
 
+(use-package smartparens
+  :ensure smartparens
+  :hook (prog-mode rust-mode js2-mode json-mode typescript-mode vue-mode graphql-mode)
+  :config
+  (require 'smartparens-config))
+
+(use-package corfu
+  :hook
+  ((prog-mode . corfu-mode)
+   (shell-mode . corfu-mode)
+   (eshell-mode . corfu-mode))
+  :init
+  (global-corfu-mode))
+
+;; Nix
+
+(use-package nix-mode
+  :mode ("\\.nix\\'" . nix-mode))
+
+;; Haskell
+
+(use-package haskell-mode
+  :mode ("\\.hs\\'" . haskell-mode)
+  :hook (haskell-mode . flycheck-mode)
+  :config
+  (setq haskell-stylish-on-save t
+	haskell-indent-spaces 4
+	flycheck-haskell-ghc-checker-executable "hlint"
+	flycheck-check-syntax-automatically '(mode-enabled save new-line)))
+
+(use-package lsp-haskell
+  :after haskell-mode
+  :hook (haskell-mode . lsp)
+  :config
+  (setq lsp-haskell-server-path "haskell-language-server-wrapper"))
+
+;; Rust
+
 (use-package rust-mode
   :mode ("\\.rs\\'" . rust-mode)
   :hook (rust-mode . lsp))
@@ -70,6 +108,8 @@
 (use-package slint-mode
   :mode ("\\.slint\\'" . slint-mode)
   :hook (slint-mode . lsp))
+
+;; Web development
 
 (use-package js2-mode
   :mode ("\\.js\\'" . js-mode)
@@ -98,23 +138,3 @@
 (use-package graphql-mode
   :hook (graphql-mode . lsp)
   :mode ("\\.graphql\\'" . graphql-mode))
-
-(use-package nix-mode
-  :mode ("\\.nix\\'" . nix-mode))
-
-(use-package lsp-mode
-  :commands lsp)
-
-(use-package smartparens
-  :ensure smartparens
-  :hook (prog-mode rust-mode js2-mode json-mode typescript-mode vue-mode graphql-mode)
-  :config
-  (require 'smartparens-config))
-
-(use-package corfu
-  :hook
-  ((prog-mode . corfu-mode)
-   (shell-mode . corfu-mode)
-   (eshell-mode . corfu-mode))
-  :init
-  (global-corfu-mode))
