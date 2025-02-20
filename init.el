@@ -82,6 +82,15 @@
 (use-package nix-mode
   :mode ("\\.nix\\'" . nix-mode))
 
+;; Idris
+
+(use-package idris2-mode
+  :straight (idris2-mode
+             :host github
+             :repo "idris-community/idris2-mode")
+  :hook (idris2-mode . lsp)
+  :commands idris2-mode)
+
 ;; Haskell
 
 (use-package haskell-mode
