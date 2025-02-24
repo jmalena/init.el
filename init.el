@@ -108,6 +108,19 @@
   :config
   (setq lsp-haskell-server-path "haskell-language-server-wrapper"))
 
+;; Mojo
+
+(use-package mojo
+  :straight (:host github :repo "andcarnivorous/mojo-hl")
+  :commands (mojo-mode mojo-compile)
+  :mode ("\\.mojo\\'" . mojo-mode))
+
+;; Python
+
+(use-package python-mode
+  :mode ("\\.py\\'" . python-mode)
+  :hook (python-mode . lsp))
+
 ;; Rust
 
 (use-package rust-mode
