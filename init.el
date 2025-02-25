@@ -91,6 +91,9 @@
   :hook (idris2-mode . lsp)
   :commands idris2-mode)
 
+(use-package idris-mode
+  :mode ("\\.ipkg\\'" . idris-mode))
+
 ;; Haskell
 
 (use-package haskell-mode
