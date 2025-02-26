@@ -101,7 +101,7 @@
   :hook (haskell-mode . flycheck-mode)
   :config
   (setq haskell-stylish-on-save t
-	haskell-indent-spaces 4
+	haskell-indent-spaces 2
 	flycheck-haskell-ghc-checker-executable "hlint"
 	flycheck-check-syntax-automatically '(mode-enabled save new-line)))
 
