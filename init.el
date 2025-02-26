@@ -20,6 +20,13 @@
   :custom
   (straight-use-package-by-default t))
 
+;; Load ~/.zshrc env variables on MacOS
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
+
 (use-package emacs
   :init
   ;; Open empty file on startup
