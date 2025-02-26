@@ -95,11 +95,9 @@
   :straight (idris2-mode
              :host github
              :repo "idris-community/idris2-mode")
-  :hook (idris2-mode . lsp)
-  :commands idris2-mode)
-
-(use-package idris-mode
-  :mode ("\\.ipkg\\'" . idris-mode))
+  :mode (("\\.idr\\'" . idris2-mode)
+	 ("\\.ipkg\\'" . idris2-mode))
+  :hook (idris2-mode . lsp))
 
 ;; Haskell
 
