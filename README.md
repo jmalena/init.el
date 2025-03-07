@@ -24,6 +24,11 @@ $ pack install-app idris2-lsp
 $ brew install haskell-language-server hlint
 ```
 
+### Typescript
+```sh
+$ npm install -g typescript-language-server
+```
+
 ### Vue
 
 ```sh
