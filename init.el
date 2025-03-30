@@ -160,6 +160,10 @@
   :config
   (setq typescript-indent-level 2))
 
+(use-package svelte-mode
+  :hook (svelte-mode . lsp)
+  :mode ("\\.svelte\\'" . svelte-mode))
+
 (use-package vue-mode
   :hook (vue-mode . lsp)
   :mode ("\\.vue\\'" . vue-mode)

@@ -35,6 +35,12 @@ $ npm install -g typescript-language-server
 $ npm install -g @vue/language-server
 ```
 
+### Svelte
+
+```sh
+$ npm install -g svelte-language-server
+```
+
 ### Ag
 
 ```sh
