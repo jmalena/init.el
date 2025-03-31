@@ -110,6 +110,13 @@
 	flycheck-haskell-ghc-checker-executable "hlint"
 	flycheck-check-syntax-automatically '(mode-enabled save new-line)))
 
+;; PureScript
+
+(use-package purescript-mode
+  :mode ("\\.purs\\'" . purescript-mode)
+  :hook (purescript-mode . lsp))
+
+
 (use-package lsp-haskell
   :after haskell-mode
   :hook (haskell-mode . lsp)
