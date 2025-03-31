@@ -146,6 +146,12 @@
   :mode ("\\.slint\\'" . slint-mode)
   :hook (slint-mode . lsp))
 
+;; PHP
+
+(use-package php-mode
+  :mode ("\\.php\\'" . php-mode)
+  :hook (php-mode . lsp))
+
 ;; Web development
 
 (use-package js2-mode
