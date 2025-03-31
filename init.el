@@ -89,6 +89,11 @@
 (use-package nix-mode
   :mode ("\\.nix\\'" . nix-mode))
 
+;; Dhall
+
+(use-package dhall-mode
+  :mode ("\\.dhall\\'" . dhall-mode))
+
 ;; Idris
 
 (use-package idris2-mode
