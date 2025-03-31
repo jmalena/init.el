@@ -110,18 +110,17 @@
 	flycheck-haskell-ghc-checker-executable "hlint"
 	flycheck-check-syntax-automatically '(mode-enabled save new-line)))
 
-;; PureScript
-
-(use-package purescript-mode
-  :mode ("\\.purs\\'" . purescript-mode)
-  :hook (purescript-mode . lsp))
-
-
 (use-package lsp-haskell
   :after haskell-mode
   :hook (haskell-mode . lsp)
   :config
   (setq lsp-haskell-server-path "haskell-language-server-wrapper"))
+
+;; PureScript
+
+(use-package purescript-mode
+  :mode ("\\.purs\\'" . purescript-mode)
+  :hook (purescript-mode . lsp))
 
 ;; Mojo
 
@@ -142,6 +141,8 @@
   :mode ("\\.rs\\'" . rust-mode)
   :hook (rust-mode . lsp))
 
+;; Slint
+
 (use-package slint-mode
   :mode ("\\.slint\\'" . slint-mode)
   :hook (slint-mode . lsp))
@@ -152,7 +153,7 @@
   :mode ("\\.php\\'" . php-mode)
   :hook (php-mode . lsp))
 
-;; Web development
+;; JavaScript
 
 (use-package js2-mode
   :mode ("\\.js\\'" . js-mode)
@@ -161,11 +162,15 @@
   :config
   (setq js2-basic-offset 2))
 
+;; JSON
+
 (use-package json-mode
   :mode ("\\.json\\'" . json-mode)
   :hook (json-mode . lsp)
   :config
   (setq js-indent-level 2))
+
+;; TypeScript
 
 (use-package typescript-mode
   :mode ("\\.ts\\'" . typescript-mode)
@@ -173,9 +178,13 @@
   :config
   (setq typescript-indent-level 2))
 
+;; Svelte
+
 (use-package svelte-mode
   :hook (svelte-mode . lsp)
   :mode ("\\.svelte\\'" . svelte-mode))
+
+;; Vue
 
 (use-package vue-mode
   :hook (vue-mode . lsp)
@@ -183,6 +192,13 @@
   :config
   (setq mmm-submode-decoration-level 0))
 
+;; GraphQL
+
 (use-package graphql-mode
   :hook (graphql-mode . lsp)
   :mode ("\\.graphql\\'" . graphql-mode))
+
+;; CSV
+
+(use-package csv-mode
+  :mode ("\\.csv\\'" . csv-mode))
