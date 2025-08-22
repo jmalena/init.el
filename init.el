@@ -140,7 +140,22 @@
   :mode ("\\.py\\'" . python-mode)
   :hook (python-mode . lsp))
 
-;; Rust
+;;; C++
+
+(use-package cc-mode
+  :ensure nil
+  :hook ((c++-mode . lsp)
+         (c-mode . lsp))
+  :config
+  (setq c-basic-offset 4
+        tab-width 4
+        indent-tabs-mode nil
+        c-default-style "bsd")
+  ;; Use 'clangd' for LSP
+  (with-eval-after-load 'lsp-mode
+    (setq lsp-clients-clangd-executable "clangd")))
+
+;;; Rust
 
 (use-package rust-mode
   :mode ("\\.rs\\'" . rust-mode)
