@@ -162,6 +162,13 @@
   :mode ("CMakeLists\\.txt\\'" "\\.cmake\\'")
   :hook (cmake-mode . lsp))
 
+;;; Yacc/Bison
+
+(use-package bison-mode
+  :straight (:host github :repo "wilfred/bison-mode")
+  :mode (("\\.y\\'" . bison-mode)
+         ("\\.yy\\'" . bison-mode)))
+
 ;;; Rust
 
 (use-package rust-mode
