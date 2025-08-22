@@ -24,6 +24,19 @@ $ pack install-app idris2-lsp
 $ brew install haskell-language-server hlint
 ```
 
+### C/C++
+
+```sh
+$ brew install llvm
+$ echo 'export PATH="/opt/homebrew/opt/llvm/bin:$PATH"' >> ~/.zshrc
+```
+
+### CMake
+
+```sh
+$ brew install cmake
+```
+
 ### Typescript
 ```sh
 $ npm install -g typescript-language-server
