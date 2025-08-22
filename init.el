@@ -155,6 +155,13 @@
   (with-eval-after-load 'lsp-mode
     (setq lsp-clients-clangd-executable "clangd")))
 
+;;; CMake
+
+(use-package cmake-mode
+  :ensure t
+  :mode ("CMakeLists\\.txt\\'" "\\.cmake\\'")
+  :hook (cmake-mode . lsp))
+
 ;;; Rust
 
 (use-package rust-mode
