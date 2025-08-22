@@ -48,7 +48,7 @@
   ;; Enable fullscreen mode on macOS
   (ns-use-native-fullscreen nil))
 
-;;; Appearance
+;;; UI & Appearance
 
 (use-package dashboard
   :config
