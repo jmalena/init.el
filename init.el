@@ -1,3 +1,5 @@
+;;; Bootstrap
+
 ;; Install straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -20,12 +22,16 @@
   :custom
   (straight-use-package-by-default t))
 
+;;; System Stuff
+
 ;; Load ~/.zshrc env variables on MacOS
 (use-package exec-path-from-shell
   :ensure t
   :config
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
+
+;;; Emacs Settings
 
 (use-package emacs
   :init
@@ -42,6 +48,8 @@
   ;; Enable fullscreen mode on macOS
   (ns-use-native-fullscreen nil))
 
+;;; Appearance
+
 (use-package dashboard
   :config
   (setq dashboard-items '((recents . 5)))
@@ -57,6 +65,8 @@
 (use-package spacemacs-theme
   :defer t
   :init (load-theme 'spacemacs-dark t))
+
+;;; Tools
 
 (use-package helm
   :bind (("M-x" . helm-M-x)
@@ -84,17 +94,19 @@
   :init
   (global-corfu-mode))
 
-;; Nix
+;;; Language Support
+
+;;;; Nix
 
 (use-package nix-mode
   :mode ("\\.nix\\'" . nix-mode))
 
-;; Dhall
+;;;; Dhall
 
 (use-package dhall-mode
   :mode ("\\.dhall\\'" . dhall-mode))
 
-;; Idris
+;;;; Idris
 
 (use-package idris2-mode
   :straight (idris2-mode
@@ -104,7 +116,7 @@
 	 ("\\.ipkg\\'" . idris2-mode))
   :hook (idris2-mode . lsp))
 
-;; Haskell
+;;;; Haskell
 
 (use-package haskell-mode
   :mode ("\\.hs\\'" . haskell-mode)
@@ -121,26 +133,26 @@
   :config
   (setq lsp-haskell-server-path "haskell-language-server-wrapper"))
 
-;; PureScript
+;;;; PureScript
 
 (use-package purescript-mode
   :mode ("\\.purs\\'" . purescript-mode)
   :hook (purescript-mode . lsp))
 
-;; Mojo
+;;;; Mojo
 
 (use-package mojo
   :straight (:host github :repo "andcarnivorous/mojo-hl")
   :commands (mojo-mode mojo-compile)
   :mode ("\\.mojo\\'" . mojo-mode))
 
-;; Python
+;;;; Python
 
 (use-package python-mode
   :mode ("\\.py\\'" . python-mode)
   :hook (python-mode . lsp))
 
-;;; C++
+;;;; C++
 
 (use-package cc-mode
   :ensure nil
@@ -155,39 +167,39 @@
   (with-eval-after-load 'lsp-mode
     (setq lsp-clients-clangd-executable "clangd")))
 
-;;; CMake
+;;;; CMake
 
 (use-package cmake-mode
   :ensure t
   :mode ("CMakeLists\\.txt\\'" "\\.cmake\\'")
   :hook (cmake-mode . lsp))
 
-;;; Yacc/Bison
+;;;; Yacc/Bison
 
 (use-package bison-mode
   :straight (:host github :repo "wilfred/bison-mode")
   :mode (("\\.y\\'" . bison-mode)
          ("\\.yy\\'" . bison-mode)))
 
-;;; Rust
+;;;; Rust
 
 (use-package rust-mode
   :mode ("\\.rs\\'" . rust-mode)
   :hook (rust-mode . lsp))
 
-;; Slint
+;;;; Slint
 
 (use-package slint-mode
   :mode ("\\.slint\\'" . slint-mode)
   :hook (slint-mode . lsp))
 
-;; PHP
+;;;; PHP
 
 (use-package php-mode
   :mode ("\\.php\\'" . php-mode)
   :hook (php-mode . lsp))
 
-;; JavaScript
+;;;; JavaScript
 
 (use-package js2-mode
   :mode ("\\.js\\'" . js-mode)
@@ -196,7 +208,7 @@
   :config
   (setq js2-basic-offset 2))
 
-;; JSON
+;;;; JSON
 
 (use-package json-mode
   :mode ("\\.json\\'" . json-mode)
@@ -204,7 +216,7 @@
   :config
   (setq js-indent-level 2))
 
-;; TypeScript
+;;;; TypeScript
 
 (use-package typescript-mode
   :mode ("\\.ts\\'" . typescript-mode)
@@ -212,13 +224,13 @@
   :config
   (setq typescript-indent-level 2))
 
-;; Svelte
+;;;; Svelte
 
 (use-package svelte-mode
   :hook (svelte-mode . lsp)
   :mode ("\\.svelte\\'" . svelte-mode))
 
-;; Vue
+;;;; Vue
 
 (use-package vue-mode
   :hook (vue-mode . lsp)
@@ -226,13 +238,13 @@
   :config
   (setq mmm-submode-decoration-level 0))
 
-;; GraphQL
+;;;; GraphQL
 
 (use-package graphql-mode
   :hook (graphql-mode . lsp)
   :mode ("\\.graphql\\'" . graphql-mode))
 
-;; CSV
+;;;; CSV
 
 (use-package csv-mode
   :mode ("\\.csv\\'" . csv-mode))
