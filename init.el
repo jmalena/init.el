@@ -248,3 +248,12 @@
 
 (use-package csv-mode
   :mode ("\\.csv\\'" . csv-mode))
+
+;;;; YAML
+
+(use-package yaml-mode
+  :hook (yaml-mode . lsp)
+  :mode (("\\.yml\\'" . yaml-mode)
+         ("\\.yaml\\'" . yaml-mode))
+  :config
+  (setq yaml-indent-offset 2))
