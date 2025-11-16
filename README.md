@@ -62,7 +62,8 @@ $ brew install the_silver_searcher
 
 ### Protobuf
 
+NOTE: lsp is disabled for now.
+
 ```sh
-brew install bufbuild/buf/buf
-brew install bufls
+brew install buf
 ```

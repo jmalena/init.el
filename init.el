@@ -261,7 +261,7 @@
 ;;;; Protobuf
 
 (use-package protobuf-mode
-  :hook (protobuf-mode . lsp)
+  ; :hook (protobuf-mode . lsp)
   :mode ("\\.proto\\'" . protobuf-mode)
   :config
   (setq c-basic-offset 2))
