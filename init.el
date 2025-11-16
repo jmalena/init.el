@@ -257,3 +257,9 @@
          ("\\.yaml\\'" . yaml-mode))
   :config
   (setq yaml-indent-offset 2))
+
+;;;; Protobuf
+
+(use-package protobuf-mode
+  :hook (protobuf-mode . lsp)
+  :mode ("\\.proto\\'" . protobuf-mode))

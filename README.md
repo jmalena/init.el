@@ -59,3 +59,10 @@ $ npm install -g svelte-language-server
 ```sh
 $ brew install the_silver_searcher
 ```
+
+### Protobuf
+
+```sh
+brew install bufbuild/buf/buf
+brew install bufls
+```
