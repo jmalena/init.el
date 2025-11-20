@@ -265,3 +265,9 @@
   :mode ("\\.proto\\'" . protobuf-mode)
   :config
   (setq c-basic-offset 2))
+
+;;;; Dotenv
+
+(use-package dotenv-mode
+  :ensure t
+  :mode "\\.env\\(?:\\..*\\)?\\'")
